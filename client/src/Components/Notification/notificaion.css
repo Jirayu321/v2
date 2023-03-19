@@ -1,0 +1,47 @@
+.bodyNotificaion {
+  background: white;
+  width: 90%;
+  height: 570px;
+  position: absolute;
+  top: 180px;
+  left: 122px;
+}
+.headerNotificaion{
+    padding-left: 100px;
+}
+.inmocontent {
+  position: absolute;
+  top: 90px;
+  left: 28px;
+  width: 96%;
+}
+.content {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  width: 96%;
+  margin-bottom: 20px;
+  height: 100px;
+}
+.boxcontent {
+  border-left: 4px solid #ffc100;
+  height: 80%;
+  padding: 10px;
+  margin: 10px;
+}
+.textleft {
+  text-align: start;
+  float: left;
+}
+.textright {
+  text-align: end;
+}
+.textleft2 {
+  text-align: start;
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+  color: #858585;
+}

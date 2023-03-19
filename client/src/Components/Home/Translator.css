@@ -1,0 +1,7 @@
+.Translator_headtext {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  margin-top: 50px;
+  grid-template-columns: auto;
+}

@@ -1,0 +1,143 @@
+/* navHome */
+.NavLi {
+  position: initial;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  /* width: 100px; */
+  height: 40px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: transparent;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  right: 160%;
+  color: #0097fe;
+}
+
+.dd {
+  display: flex;
+  position: absolute;
+  left: 30%;
+}
+.dd2 {
+  display: flex;
+  position: absolute;
+  left: 86%;
+}
+
+.buttonLogin {
+  position: initial;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 140px;
+  height: 40px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #0097fe;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  right: 160%;
+  border: transparent;
+}
+
+/* navHome2 */
+#navbardb2 {
+  background: #fffdf7;
+}
+#navbarTranslater {
+  background: #f6fbfe;
+}
+
+.box4navbarHome2 {
+  height: 38px;
+  background: #fffdf7;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 10px;
+  margin-left: 10px;
+}
+.boxTranslate {
+  width: 70px;
+  height: 38px;
+  background: #f6fbfe;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 10px;
+  margin-left: 10px;
+}
+.box4navbarHome2_1 {
+  width: 70px;
+  height: 38px;
+  background: transparent;
+  margin-left: 10px;
+}
+.icon_accounts {
+  display: inline-flex;
+  font-size: 30px;
+  margin-top: 5px;
+}
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: -110px;
+  margin-top: 0.125rem;
+}
+.nav-link {
+  display: block;
+  color: #808080;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  padding: 0px;
+}
+.nav-link:focus,
+.nav-link:hover {
+  color: #808080;
+}
+.avatar {
+  width: 98%;
+  color: #3333;
+}

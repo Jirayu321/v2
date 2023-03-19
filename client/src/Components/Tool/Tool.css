@@ -1,0 +1,149 @@
+.AppBobyTool {
+  background-color: #cbe9fe;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.BobyTool {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 90vw;
+}
+.TextHTool {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 500;
+  float: left;
+}
+.FormBtton {
+  float: none;
+  margin-bottom: 15px;
+  text-align: end;
+}
+.helper {
+  background: #f6fbfe;
+  border: none;
+  width: 200px;
+  height: 50px;
+  margin-right: 40px;
+}
+.helper img {
+  float: left;
+  margin-left: 50px;
+  width: 25px;
+}
+.helper p {
+  margin-right: 50px;
+}
+.Submit {
+  background: #ffdb66;
+  border: none;
+  width: 200px;
+  height: 50px;
+  margin-right: 40px;
+}
+.SunEditor {
+  text-align: left;
+  height: 350px;
+}
+.BoxSunEditor {
+  background: #ffffff;
+  padding: 50px;
+  padding-top: 15px;
+  height: 76vh;
+}
+.InBoxSunEditor {
+  display: flex;
+  margin-bottom: 10px;
+}
+.InBoxSunEditor p {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333333;
+}
+.BsFileEarmarkText {
+  font-size: 50px;
+}
+.BoxModal {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  width: 70vw;
+  height: 40vh;
+  box-shadow: 24px;
+  padding: 2.9vw;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  overflow: scroll;
+  display: flex;
+  background-color: #ffffff;
+  justify-content: center;
+}
+.BoxModal2 {
+  position: absolute;
+  top: 10%;
+  left: 1%;
+  width: 98vw;
+  height: 85vh;
+  box-shadow: 24px;
+  padding: 2.9vw;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  /* display: flex; */
+  background-color: #ffffff;
+  /* justify-content: center; */
+}
+.BoxModalButton {
+  box-sizing: border-box;
+  width: 230px;
+  height: 175px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px 80px;
+}
+.BoxModalButton p {
+  font-weight: 500;
+}
+.ImTextColor {
+  font-size: 40px;
+}
+.Autocomplete {
+  width: 150px;
+}
+.form {
+  display: flex;
+}
+
+.formIn2 {
+  position: relative;
+  top: 35px;
+  left: 48vw;
+}
+
+.rowbuttonTools {
+  display: flex;
+}
+.Toolsbutton {
+  color: #606060;
+  border: 1px solid #e5e5e5;
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.Toolsbutton2 {
+  color: #262DBB;
+  border: 1px solid #262DBB;
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 4px;
+}

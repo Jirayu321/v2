@@ -1,0 +1,18 @@
+.ForgetPassword {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  text-decoration-line: underline;
+  color: #000000;
+}
+.ForgetPassword:active {
+  color: black;
+}
+.ForgetPassword:hover {
+    color: black;
+  }
+
+.ForgetPassword:visited {
+  color: #000000;
+}
