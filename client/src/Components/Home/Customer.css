@@ -1,0 +1,78 @@
+.fram1 {
+  background: linear-gradient(0deg, rgb(255 255 255 / 0%), rgba(0, 0, 0, 0.2)),
+    url("../../Images/fram1Home.png");
+  height: 85vh;
+  /* background-position: center; */
+  background-repeat: round;
+}
+.fram1_button2 {
+  background: transparent;
+  border-radius: 26.5px;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  margin: 20px;
+  width: 13vw;
+}
+.textCustomerH {
+  display: contents;
+}
+.textHeading2_overviwe {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 70px;
+  text-align: center;
+  color: #333333;
+}
+.Get_Quote {
+  background: linear-gradient(
+    91.8deg,
+    #0097fe 1.03%,
+    #0075ff 1.04%,
+    #9e70ff 99.01%
+  );
+}
+.BsFileEarmarkFill {
+  font-size: 28px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+}
+.textHeading2_overviwe2 {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 40px;
+  text-align: start;
+  color: #333333;
+}
+.BoxFilter {
+  border: 1px solid rgb(229, 229, 229);
+  height: 135px;
+  padding-top: 10px;
+  border-radius: 10px;
+  width: 90vw;
+}
+.boxPrice {
+  display: flex;
+  justify-content: space-around;
+}
+.Price {
+  font-size: 25px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  color: #bdbdbd;
+}
+.PriceInt {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 38px;
+  align-items: center;
+
+  color: #df0000;
+}

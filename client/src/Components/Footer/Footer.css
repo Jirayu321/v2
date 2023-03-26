@@ -1,13 +1,9 @@
 .ContentFooter {
   background-color: rgb(253, 239, 194);
   width: 100%;
-  position: absolute;
   padding: 20px;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  /* align-items: center; */
-  padding-bottom: 60px;
-  padding-top: 30px;
 }
 .textFooter1 {
   font-weight: 500;
@@ -59,11 +55,9 @@
 .ContentFooter2 {
   background-color: #034d82;
   width: 100%;
-  position: relative;
   text-align: center;
   padding: 10px;
   height: 40px;
-  top: 45vh;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: center;

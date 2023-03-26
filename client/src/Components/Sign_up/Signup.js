@@ -367,7 +367,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -646,7 +646,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -925,7 +925,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -1204,7 +1204,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -1487,7 +1487,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -1779,7 +1779,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -2070,7 +2070,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,
@@ -2361,7 +2361,7 @@ const Signup = () => {
                   <div
                     style={{
                       position: "fixed",
-                      top: 20,
+                      top: 30,
                       left: width * 0.59,
                       textAlign: "-webkit-center",
                       width: 500,

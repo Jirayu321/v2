@@ -5,11 +5,32 @@ import Footer from "../Footer/Footer";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { data, data2, data3, data4, data5 } from "../Data/data";
-import { IconButton, Input, TextField, Autocomplete, Box } from "@mui/material";
+import { FaUserCircle } from "react-icons/fa";
+import {
+  IconButton,
+  Input,
+  TextField,
+  Autocomplete,
+  Box,
+  FormControlLabel,
+  Checkbox,
+  Stack,
+  Rating,
+  Modal,
+  Typography,
+} from "@mui/material";
 
 import { MdArrowDropDown } from "react-icons/md";
 
-import { CustomerEN, CustomerDE, CustomerTH } from "../Data/DataLanguage";
+import Fileimg from "../../Images/file.png";
+
+import {
+  CustomerEN,
+  //  CustomerDE,
+  //  CustomerTH
+} from "../Data/DataLanguage";
+
+import "./Customer.css";
 
 const Customer = () => {
   const { innerWidth: width, innerHeight: height } = window;
@@ -25,6 +46,14 @@ const Customer = () => {
   const [tranto, setTranto] = React.useState("");
   const [file, setFile] = React.useState("");
   const [promo, setPromo] = React.useState("");
+  const [checked, setChecked] = React.useState({
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+  });
+  const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
     setTextarea(event.target.value);
@@ -83,45 +112,63 @@ const Customer = () => {
           <Navbars navigate={navigate} languages="English" />
         )}
       </header>
-      {Doc === undefined ? (
-        <>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            transform: "translate(-50%, -70%)",
+            width: 400,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 5,
+            border: "1px solid #E5E5E5",
+            textAlign: "center",
+            left:500,
+          }}
+        >
+          <Typography
+            id="keep-mounted-modal-description"
+            sx={{ mt: 2, fontWeight: 700 }}
+          >
+            {/* {overviewEN[20].label} */}
+          </Typography>
+          <Typography
+            id="keep-mounted-modal-description"
+            sx={{
+              mt: 2,
+              textAlign: "left",
+              overflowY: "auto",
+              height: 200,
+            }}
+          >
+            {/* {overviewEN[8].label} */}
+          </Typography>
+          <div
+            style={{
+              textAlign: "left",
+              borderTop: "1px solid #C4C4C4",
+            }}
+          ></div>
+        </Box>
+      </Modal>
+      <>
+        <div className="fram1">
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <div>
-              <div
-                style={{
-                  top: 100,
-                  background: "#97D5FF",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 400,
-                  borderRadius: 200,
-                }}
-              />
-              <div
-                style={{
-                  top: 100,
-                  background: "#FFEDB2",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 700,
-                  borderRadius: 200,
-                }}
-              />
-            </div>
-
             <div
               style={{
                 textAlign: "center",
                 justifyItems: "center",
                 // width: 1100,
                 display: "inline-grid",
-                marginTop: 50,
+                position: "relative",
+                top: 125,
               }}
             >
               <div>
@@ -129,2457 +176,212 @@ const Customer = () => {
                   style={{
                     fontWeight: "bold",
                     fontSize: 56,
-                    color: "#0097FE",
+                    color: "#FFFFFF",
                   }}
                 >
                   {CustomerEN[0].label}
                 </p>
               </div>
               <div className="textCustomerH">
-                <p style={{ fontSize: 23, color: "#444444", width: "80vw" }}>
+                <p style={{ fontSize: 23, color: "#FFFFFF", width: "80vw" }}>
                   {CustomerEN[1].label}
                 </p>
               </div>
               <div
                 style={{
-                  position: "absolute",
-                  top: 380,
+                  position: "relative",
+                  top: 40,
                 }}
               >
-                <button
-                  className="box5"
-                  style={{ width: 220, height: 50, borderRadius: 40 }}
-                  onClick={() => goSignup()}
-                >
-                  <p
-                    style={{
-                      color: "#FFFF",
-                      fontSize: 18,
-                      lineHeight: 21,
-                      textDecorationLine: "none",
-                    }}
-                  >
-                    {CustomerEN[2].label}
-                  </p>
-                </button>
+                <button className="fram1_button2">Subscribe</button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div
-            style={{
-              position: "absolute",
-              top: height * 0.7,
-              width: width,
-              height: 800,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerEN[3].label}
-                </p>
-              </div>
-
-              <div>
-                {file === "" ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                        multiple
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            lineHeight: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {CustomerEN[13].label}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                        multiple
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {cutsting(file)}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                )}
-
-                <div
-                  style={{
-                    position: "absolute",
-                    width: width * 0.55,
-                    height: 670,
-                    border: "1px solid #E5E5E5",
-                    boxSizing: " border-box",
-                    borderRadius: 20,
-                    left: width * 0.42,
-                    padding: 10,
-                    textAlign: "left",
-                    borderLeft: "none",
-                    borderBottomLeftRadius: "unset",
-                    borderTopLeftRadius: "unset",
-                  }}
-                >
-                  <div style={{ float: "left", marginLeft: 90 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[5].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data2}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => settype(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerEN[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", marginLeft: 60 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[4].label}
-                      </p>
-                    </div>
-                    {type === null ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "Official Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data4}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "General Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data3}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => console.log(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    )}
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      margin: 30,
-                      marginLeft: 90,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[6].label}
-                      </p>
-                    </div>
-
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranfrom(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerEN[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", margin: 30, marginBottom: 20 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[7].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranto(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerEN[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      marginBottom: 0,
-                      position: "absolute",
-                      top: 290,
-                      left: 50,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[8].label}
-                      </p>
-                    </div>
-                    <textarea
-                      value={textarea}
-                      onChange={handleChange}
-                      maxLength={150}
-                      style={{
-                        position: "absolute",
-                        width: 620,
-                        height: 243,
-                        background: "#FFFFFF",
-                        border: "1px solid #E5E5E5",
-                        boxSizing: "border-box",
-                        borderRadius: 5,
-                        padding: 20,
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      position: "absolute",
-                      top: 600,
-                      left: width * 0.42,
-                      background: "#0097FE",
-                      width: 110,
-                      padding: 10,
-                      borderRadius: 30,
-                      textAlign: "center",
-                      borderColor: "transparent",
-                    }}
-                    onClick={() => promotion(1)}
-                  >
-                    <p style={{ color: "#FFFFFF", fontSize: 18 }}>
-                      {CustomerEN[11].label}
-                    </p>
-                  </button>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  height: height,
-                  width: width,
-                }}
-              >
-                {promo === 1 ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.06,
-                      width: width * 0.91,
-                      height: 500,
-                      background: "#FFF9E5",
-                      boxSizing: "border-box",
-                      textAlign: "left",
-                      padding: 50,
-                      top: height * 1.1,
-                    }}
-                  >
-                    <div
-                      style={{
-                        float: "left",
-                        // margin: 30,
-                        marginRight: 400,
-                        // marginBottom: 20,
-                      }}
-                    >
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[5].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {type}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[6].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranfrom}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[8].label}
-                        </p>
-                        <div style={{ width: 400, wordWrap: "break-word" }}>
-                          <p
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: 18,
-                              color: "#888888",
-                            }}
-                          >
-                            {textarea}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[12].label}
-                        </p>
-
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#CF0202",
-                          }}
-                        >
-                          {price}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div style={{ float: "left" }}>
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[4].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {trantype}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[7].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranto}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-
-          {promo === 1 ? (
-            <div style={{ top: height * 2.5, position: "relative" }}>
-              <div>
-                <Footer v="English" />
-              </div>
-            </div>
-          ) : (
-            <div style={{ top: height * 1.56, position: "relative" }}>
-              <div>
-                <Footer v="English" />
-              </div>
-            </div>
-          )}
-        </>
-      ) : Doc === "German" ? (
-        <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div>
-              <div
-                style={{
-                  top: 100,
-                  background: "#97D5FF",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 400,
-                  borderRadius: 200,
-                }}
-              />
-              <div
-                style={{
-                  top: 100,
-                  background: "#FFEDB2",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 700,
-                  borderRadius: 200,
-                }}
-              />
-            </div>
-
+        <div
+          style={{
+            width: width,
+            height: 800,
+          }}
+        >
+          <div>
             <div
               style={{
                 textAlign: "center",
-                justifyItems: "center",
-                // width: 1100,
-                display: "inline-grid",
-                marginTop: 50,
+                marginBottom: 10,
               }}
             >
-              <div>
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerDE[0].label}
-                </p>
-              </div>
-              <div className="textCustomerH">
-                <p style={{ fontSize: 23, color: "#444444", width: "80vw" }}>
-                  {CustomerDE[1].label}
-                </p>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  top: 380,
-                }}
-              >
-                <button
-                  className="box5"
-                  style={{ width: 220, height: 50, borderRadius: 40 }}
-                  onClick={() => goSignup()}
-                >
-                  <p
-                    style={{
-                      color: "#FFFF",
-                      fontSize: 18,
-                      lineHeight: 21,
-                      textDecorationLine: "none",
-                    }}
-                  >
-                    {CustomerDE[2].label}
-                  </p>
-                </button>
-              </div>
+              <p className="textHeading2_overviwe">YOUR ORDER</p>
             </div>
-          </div>
 
-          <div
-            style={{
-              position: "absolute",
-              top: height * 0.7,
-              width: width,
-              height: 800,
-            }}
-          >
             <div>
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerDE[3].label}
-                </p>
-              </div>
-
-              <div>
-                {file === "" ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            lineHeight: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {CustomerDE[13].label}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {file}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                )}
-
+              {file === "" ? (
                 <div
                   style={{
                     position: "absolute",
-                    width: width * 0.55,
-                    height: 670,
+                    left: width * 0.08,
+                    width: 415,
+                    height: 570,
+                    background: "#FFFFFF",
                     border: "1px solid #E5E5E5",
-                    boxSizing: " border-box",
+                    boxSizing: "border-box",
+                    float: "left",
                     borderRadius: 20,
-                    left: width * 0.42,
-                    padding: 10,
-                    textAlign: "left",
-                    borderLeft: "none",
-                    borderBottomLeftRadius: "unset",
-                    borderTopLeftRadius: "unset",
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.04)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  <div style={{ float: "left", marginLeft: 90 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerDE[5].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data2}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => settype(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerDE[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
+                  <label htmlFor="icon-button-file">
+                    <Input
+                      accept="image/*"
+                      id="icon-button-file"
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={(e) => setFile(e.target.value)}
                     />
-                  </div>
-
-                  <div style={{ float: "left", marginLeft: 60 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerDE[4].label}
-                      </p>
-                    </div>
-                    {type === null ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerDE[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
+                    <IconButton
+                      color="primary"
+                      aria-label="upload picture"
+                      component="span"
+                    >
+                      <img
+                        src={Fileimg}
+                        alt="Fileimg"
+                        className="BsFileEarmarkFill"
                       />
-                    ) : type === "Official Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data4}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerDE[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "General Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data3}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerDE[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => console.log(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerDE[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    )}
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      margin: 30,
-                      marginLeft: 90,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerDE[6].label}
-                      </p>
-                    </div>
-
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranfrom(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerDE[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", margin: 30, marginBottom: 20 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerDE[7].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranto(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerDE[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      marginBottom: 0,
-                      position: "absolute",
-                      top: 290,
-                      left: 50,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerDE[8].label}
-                      </p>
-                    </div>
-                    <textarea
-                      value={textarea}
-                      onChange={handleChange}
-                      maxLength={150}
-                      style={{
-                        position: "absolute",
-                        width: 620,
-                        height: 243,
-                        background: "#FFFFFF",
-                        border: "1px solid #E5E5E5",
-                        boxSizing: "border-box",
-                        borderRadius: 5,
-                        padding: 20,
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      position: "absolute",
-                      top: 600,
-                      left: width * 0.37,
-                      background: "#0097FE",
-                      width: 180,
-                      padding: 10,
-                      borderRadius: 30,
-                      textAlign: "center",
-                      borderColor: "transparent",
-                    }}
-                    onClick={() => promotion(1)}
-                  >
-                    <p style={{ color: "#FFFFFF", fontSize: 18 }}>
-                      {CustomerDE[11].label}
-                    </p>
-                  </button>
+                    </IconButton>
+                  </label>
                 </div>
-              </div>
+              ) : (
+                <div
+                  style={{
+                    position: "absolute",
+                    left: width * 0.08,
+                    width: 415,
+                    height: 570,
+                    background: "#FFFFFF",
+                    border: "1px solid #E5E5E5",
+                    boxSizing: "border-box",
+                    float: "left",
+                    borderRadius: 20,
+                    boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <label htmlFor="icon-button-file">
+                    <Input
+                      accept="image/*"
+                      id="icon-button-file"
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={(e) => setFile(e.target.value)}
+                    />
+                    <IconButton
+                      color="primary"
+                      aria-label="upload picture"
+                      component="span"
+                    >
+                      <p
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: 24,
+                          color: "#B5B5B5",
+                        }}
+                      >
+                        {cutsting(file)}
+                      </p>
+                    </IconButton>
+                  </label>
+                </div>
+              )}
 
               <div
                 style={{
-                  height: height,
-                  width: width,
+                  position: "absolute",
+                  width: width * 0.55,
+                  height: 570,
+                  border: "1px solid #E5E5E5",
+                  boxSizing: " border-box",
+                  borderRadius: 20,
+                  left: width * 0.42,
+                  padding: 10,
+                  textAlign: "left",
+                  // borderLeft: "none",
+                  // borderBottomLeftRadius: "unset",
+                  // borderTopLeftRadius: "unset",
                 }}
               >
-                {promo === 1 ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.06,
-                      width: width * 0.91,
-                      height: 500,
-                      background: "#FFF9E5",
-                      boxSizing: "border-box",
-                      textAlign: "left",
-                      padding: 50,
-                      top: height * 1.1,
-                    }}
-                  >
-                    <div
+                <div style={{ float: "left", marginLeft: 90 }}>
+                  <div style={{ marginBottom: 10 }}>
+                    <p
                       style={{
-                        float: "left",
-                        // margin: 30,
-                        marginRight: 400,
-                        // marginBottom: 20,
+                        fontWeight: "bold",
+                        fontSize: 24,
+                        color: "#333333",
                       }}
                     >
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[5].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {type}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[6].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranfrom}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[8].label}
-                        </p>
-                        <div style={{ width: 400, wordWrap: "break-word" }}>
-                          <p
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: 18,
-                              color: "#888888",
-                            }}
-                          >
-                            {textarea}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[12].label}
-                        </p>
-
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#CF0202",
-                          }}
-                        >
-                          {price}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div style={{ float: "left" }}>
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[4].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {trantype}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerDE[7].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranto}
-                        </p>
-                      </div>
-                    </div>
+                      {CustomerEN[5].label}
+                    </p>
                   </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-
-          {promo === 1 ? (
-            <div style={{ top: height * 2.5, position: "relative" }}>
-              <div>
-                <Footer v="German" />
-              </div>
-            </div>
-          ) : (
-            <div style={{ top: height * 1.56, position: "relative" }}>
-              <div>
-                <Footer v="German" />
-              </div>
-            </div>
-          )}
-        </>
-      ) : Doc === "Thai" ? (
-        <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div>
-              <div
-                style={{
-                  top: 100,
-                  background: "#97D5FF",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 400,
-                  borderRadius: 200,
-                }}
-              />
-              <div
-                style={{
-                  top: 100,
-                  background: "#FFEDB2",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 700,
-                  borderRadius: 200,
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                textAlign: "center",
-                justifyItems: "center",
-                // width: 1100,
-                display: "inline-grid",
-                marginTop: 50,
-              }}
-            >
-              <div>
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerTH[0].label}
-                </p>
-              </div>
-              <div className="textCustomerH">
-                <p style={{ fontSize: 23, color: "#444444", width: "80vw" }}>
-                  {CustomerTH[1].label}
-                </p>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  top: 380,
-                }}
-              >
-                <button
-                  className="box5"
-                  style={{ width: 220, height: 50, borderRadius: 40 }}
-                  onClick={() => goSignup()}
-                >
-                  <p
-                    style={{
-                      color: "#FFFF",
-                      fontSize: 18,
-                      lineHeight: 21,
-                      textDecorationLine: "none",
-                    }}
-                  >
-                    {CustomerTH[2].label}
-                  </p>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: height * 0.7,
-              width: width,
-              height: 800,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerTH[3].label}
-                </p>
-              </div>
-
-              <div>
-                {file === "" ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
+                  <Autocomplete
+                    id="country-select-demo"
+                    sx={{ width: 285 }}
+                    options={data2}
+                    autoHighlight
+                    getOptionLabel={(option) => option.label}
+                    onChange={(event, value) => settype(value?.label)}
+                    popupIcon={
+                      <MdArrowDropDown
+                        style={{ color: "#333333", width: 30, height: 33 }}
                       />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
+                    }
+                    renderOption={(props, option) => (
+                      <Box
+                        component="li"
+                        sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                        {...props}
                       >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            lineHeight: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {CustomerTH[13].label}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {file}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                )}
-
-                <div
-                  style={{
-                    position: "absolute",
-                    width: width * 0.55,
-                    height: 670,
-                    border: "1px solid #E5E5E5",
-                    boxSizing: " border-box",
-                    borderRadius: 20,
-                    left: width * 0.42,
-                    padding: 10,
-                    textAlign: "left",
-                    borderLeft: "none",
-                    borderBottomLeftRadius: "unset",
-                    borderTopLeftRadius: "unset",
-                  }}
-                >
-                  <div style={{ float: "left", marginLeft: 90 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
+                        {option.label}
+                      </Box>
+                    )}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={CustomerEN[9].label}
+                        inputProps={{
+                          ...params.inputProps,
+                          autoComplete: "new-password",
                         }}
-                      >
-                        {CustomerTH[5].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data2}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => settype(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerTH[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", marginLeft: 60 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerTH[4].label}
-                      </p>
-                    </div>
-                    {type === null ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerTH[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "Official Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data4}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerTH[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "General Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data3}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerTH[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => console.log(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerTH[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
                       />
                     )}
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      margin: 30,
-                      marginLeft: 90,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerTH[6].label}
-                      </p>
-                    </div>
-
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranfrom(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerTH[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", margin: 30, marginBottom: 20 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerTH[7].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranto(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerTH[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      marginBottom: 0,
-                      position: "absolute",
-                      top: 290,
-                      left: 50,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerTH[8].label}
-                      </p>
-                    </div>
-                    <textarea
-                      value={textarea}
-                      onChange={handleChange}
-                      maxLength={150}
-                      style={{
-                        position: "absolute",
-                        width: 620,
-                        height: 243,
-                        background: "#FFFFFF",
-                        border: "1px solid #E5E5E5",
-                        boxSizing: "border-box",
-                        borderRadius: 5,
-                        padding: 20,
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      position: "absolute",
-                      top: 600,
-                      left: width * 0.37,
-                      background: "#0097FE",
-                      width: 180,
-                      padding: 10,
-                      borderRadius: 30,
-                      textAlign: "center",
-                      borderColor: "transparent",
-                    }}
-                    onClick={() => promotion(1)}
-                  >
-                    <p style={{ color: "#FFFFFF", fontSize: 18 }}>
-                      {CustomerTH[11].label}
-                    </p>
-                  </button>
+                  />
                 </div>
-              </div>
 
-              <div
-                style={{
-                  height: height,
-                  width: width,
-                }}
-              >
-                {promo === 1 ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.06,
-                      width: width * 0.91,
-                      height: 500,
-                      background: "#FFF9E5",
-                      boxSizing: "border-box",
-                      textAlign: "left",
-                      padding: 50,
-                      top: height * 1.1,
-                    }}
-                  >
-                    <div
+                <div style={{ float: "left", marginLeft: 60 }}>
+                  <div style={{ marginBottom: 10 }}>
+                    <p
                       style={{
-                        float: "left",
-                        // margin: 30,
-                        marginRight: 400,
-                        // marginBottom: 20,
+                        fontWeight: "bold",
+                        fontSize: 24,
+                        color: "#333333",
                       }}
                     >
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[5].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {type}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[6].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranfrom}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[8].label}
-                        </p>
-                        <div style={{ width: 400, wordWrap: "break-word" }}>
-                          <p
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: 18,
-                              color: "#888888",
-                            }}
-                          >
-                            {textarea}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[12].label}
-                        </p>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#CF0202",
-                          }}
-                        >
-                          {price}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div style={{ float: "left" }}>
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[4].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {trantype}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerTH[7].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranto}
-                        </p>
-                      </div>
-                    </div>
+                      {CustomerEN[4].label}
+                    </p>
                   </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-
-          {promo === 1 ? (
-            <div style={{ top: height * 2.5, position: "relative" }}>
-              <div>
-                <Footer v="Thai" />
-              </div>
-            </div>
-          ) : (
-            <div style={{ top: height * 1.56, position: "relative" }}>
-              <div>
-                <Footer v="Thai" />
-              </div>
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div>
-              <div
-                style={{
-                  top: 100,
-                  background: "#97D5FF",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 400,
-                  borderRadius: 200,
-                }}
-              />
-              <div
-                style={{
-                  top: 100,
-                  background: "#FFEDB2",
-                  opacity: 0.3,
-                  filter: "blur(20px)",
-                  position: "absolute",
-                  width: 400,
-                  height: 400,
-                  left: 700,
-                  borderRadius: 200,
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                textAlign: "center",
-                justifyItems: "center",
-                // width: 1100,
-                display: "inline-grid",
-                marginTop: 50,
-              }}
-            >
-              <div>
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerEN[0].label}
-                </p>
-              </div>
-              <div className="textCustomerH">
-                <p style={{ fontSize: 23, color: "#444444", width: "80vw" }}>
-                  {CustomerEN[1].label}
-                </p>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  top: 380,
-                }}
-              >
-                <button
-                  className="box5"
-                  style={{ width: 220, height: 50, borderRadius: 40 }}
-                  onClick={() => goSignup()}
-                >
-                  <p
-                    style={{
-                      color: "#FFFF",
-                      fontSize: 18,
-                      lineHeight: 21,
-                      textDecorationLine: "none",
-                    }}
-                  >
-                    {CustomerEN[2].label}
-                  </p>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: height * 0.7,
-              width: width,
-              height: 800,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 56,
-                    color: "#0097FE",
-                  }}
-                >
-                  {CustomerEN[3].label}
-                </p>
-              </div>
-
-              <div>
-                {file === "" ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            lineHeight: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {CustomerEN[13].label}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.08,
-                      width: width * 0.35,
-                      height: 670,
-                      background: "#FFFFFF",
-                      border: "1px solid #E5E5E5",
-                      boxSizing: "border-box",
-                      float: "left",
-                      borderRadius: 20,
-                      boxShadow: " 0px 4px 5px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <label htmlFor="icon-button-file">
-                      <Input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        style={{ display: "none" }}
-                        onChange={(e) => setFile(e.target.value)}
-                      />
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#B5B5B5",
-                          }}
-                        >
-                          {cutsting(file)}
-                        </p>
-                      </IconButton>
-                    </label>
-                  </div>
-                )}
-
-                <div
-                  style={{
-                    position: "absolute",
-                    width: width * 0.55,
-                    height: 670,
-                    border: "1px solid #E5E5E5",
-                    boxSizing: " border-box",
-                    borderRadius: 20,
-                    left: width * 0.42,
-                    padding: 10,
-                    textAlign: "left",
-                    borderLeft: "none",
-                    borderBottomLeftRadius: "unset",
-                    borderTopLeftRadius: "unset",
-                  }}
-                >
-                  <div style={{ float: "left", marginLeft: 90 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[5].label}
-                      </p>
-                    </div>
+                  {type === null ? (
                     <Autocomplete
                       id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data2}
+                      sx={{ width: 285 }}
+                      options={data5}
                       autoHighlight
                       getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => settype(value?.label)}
+                      onChange={(event, value) => setTranstype(value.label)}
                       popupIcon={
                         <MdArrowDropDown
                           style={{ color: "#333333", width: 30, height: 33 }}
@@ -2605,501 +407,546 @@ const Customer = () => {
                         />
                       )}
                     />
+                  ) : type === "Official Document" ? (
+                    <Autocomplete
+                      id="country-select-demo"
+                      sx={{ width: 285 }}
+                      options={data4}
+                      autoHighlight
+                      getOptionLabel={(option) => option.label}
+                      onChange={(event, value) => setTranstype(value?.label)}
+                      popupIcon={
+                        <MdArrowDropDown
+                          style={{ color: "#333333", width: 30, height: 33 }}
+                        />
+                      }
+                      renderOption={(props, option) => (
+                        <Box
+                          component="li"
+                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                          {...props}
+                        >
+                          {option.label}
+                        </Box>
+                      )}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label={CustomerEN[9].label}
+                          inputProps={{
+                            ...params.inputProps,
+                            autoComplete: "new-password",
+                          }}
+                        />
+                      )}
+                    />
+                  ) : type === "General Document" ? (
+                    <Autocomplete
+                      id="country-select-demo"
+                      sx={{ width: 285 }}
+                      options={data3}
+                      autoHighlight
+                      getOptionLabel={(option) => option.label}
+                      onChange={(event, value) => setTranstype(value?.label)}
+                      popupIcon={
+                        <MdArrowDropDown
+                          style={{ color: "#333333", width: 30, height: 33 }}
+                        />
+                      }
+                      renderOption={(props, option) => (
+                        <Box
+                          component="li"
+                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                          {...props}
+                        >
+                          {option.label}
+                        </Box>
+                      )}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label={CustomerEN[9].label}
+                          inputProps={{
+                            ...params.inputProps,
+                            autoComplete: "new-password",
+                          }}
+                        />
+                      )}
+                    />
+                  ) : (
+                    <Autocomplete
+                      id="country-select-demo"
+                      sx={{ width: 285 }}
+                      options={data5}
+                      autoHighlight
+                      getOptionLabel={(option) => option.label}
+                      onChange={(event, value) => console.log(value?.label)}
+                      popupIcon={
+                        <MdArrowDropDown
+                          style={{ color: "#333333", width: 30, height: 33 }}
+                        />
+                      }
+                      renderOption={(props, option) => (
+                        <Box
+                          component="li"
+                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                          {...props}
+                        >
+                          {option.label}
+                        </Box>
+                      )}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label={CustomerEN[9].label}
+                          inputProps={{
+                            ...params.inputProps,
+                            autoComplete: "new-password",
+                          }}
+                        />
+                      )}
+                    />
+                  )}
+                </div>
+
+                <div
+                  style={{
+                    float: "left",
+                    margin: 30,
+                    marginLeft: 90,
+                    marginBottom: 20,
+                  }}
+                >
+                  <div style={{ marginBottom: 10 }}>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: 24,
+                        color: "#333333",
+                      }}
+                    >
+                      {CustomerEN[6].label}
+                    </p>
                   </div>
 
-                  <div style={{ float: "left", marginLeft: 60 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
+                  <Autocomplete
+                    id="country-select-demo"
+                    sx={{ width: 285 }}
+                    options={data}
+                    autoHighlight
+                    getOptionLabel={(option) => option.label}
+                    onChange={(event, value) => setTranfrom(value?.label)}
+                    popupIcon={
+                      <MdArrowDropDown
+                        style={{ color: "#333333", width: 30, height: 33 }}
+                      />
+                    }
+                    renderOption={(props, option) => (
+                      <Box
+                        component="li"
+                        sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                        {...props}
                       >
-                        {CustomerEN[4].label}
-                      </p>
-                    </div>
-                    {type === null ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "Official Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data4}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : type === "General Document" ? (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data3}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => setTranstype(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
-                      />
-                    ) : (
-                      <Autocomplete
-                        id="country-select-demo"
-                        sx={{ width: 260 }}
-                        options={data5}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        onChange={(event, value) => console.log(value?.label)}
-                        popupIcon={
-                          <MdArrowDropDown
-                            style={{ color: "#333333", width: 30, height: 33 }}
-                          />
-                        }
-                        renderOption={(props, option) => (
-                          <Box
-                            component="li"
-                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                            {...props}
-                          >
-                            {option.label}
-                          </Box>
-                        )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={CustomerEN[9].label}
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password",
-                            }}
-                          />
-                        )}
+                        {option.label}
+                      </Box>
+                    )}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={CustomerEN[9].label}
+                        inputProps={{
+                          ...params.inputProps,
+                          autoComplete: "new-password",
+                        }}
                       />
                     )}
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      margin: 30,
-                      marginLeft: 90,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[6].label}
-                      </p>
-                    </div>
-
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranfrom(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerEN[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div style={{ float: "left", margin: 30, marginBottom: 20 }}>
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[7].label}
-                      </p>
-                    </div>
-                    <Autocomplete
-                      id="country-select-demo"
-                      sx={{ width: 260 }}
-                      options={data}
-                      autoHighlight
-                      getOptionLabel={(option) => option.label}
-                      onChange={(event, value) => setTranto(value?.label)}
-                      popupIcon={
-                        <MdArrowDropDown
-                          style={{ color: "#333333", width: 30, height: 33 }}
-                        />
-                      }
-                      renderOption={(props, option) => (
-                        <Box
-                          component="li"
-                          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                          {...props}
-                        >
-                          {option.label}
-                        </Box>
-                      )}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={CustomerEN[9].label}
-                          inputProps={{
-                            ...params.inputProps,
-                            autoComplete: "new-password",
-                          }}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      marginBottom: 0,
-                      position: "absolute",
-                      top: 290,
-                      left: 50,
-                    }}
-                  >
-                    <div style={{ marginBottom: 10 }}>
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: 24,
-                          color: "#333333",
-                        }}
-                      >
-                        {CustomerEN[8].label}
-                      </p>
-                    </div>
-                    <textarea
-                      value={textarea}
-                      onChange={handleChange}
-                      maxLength={150}
-                      style={{
-                        position: "absolute",
-                        width: 620,
-                        height: 243,
-                        background: "#FFFFFF",
-                        border: "1px solid #E5E5E5",
-                        boxSizing: "border-box",
-                        borderRadius: 5,
-                        padding: 20,
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    style={{
-                      float: "left",
-                      marginRight: 50,
-                      marginLeft: 50,
-                      position: "absolute",
-                      top: 600,
-                      left: width * 0.42,
-                      background: "#0097FE",
-                      width: 110,
-                      padding: 10,
-                      borderRadius: 30,
-                      textAlign: "center",
-                      borderColor: "transparent",
-                    }}
-                    onClick={() => promotion(1)}
-                  >
-                    <p style={{ color: "#FFFFFF", fontSize: 18 }}>
-                      {CustomerEN[11].label}
-                    </p>
-                  </button>
+                  />
                 </div>
-              </div>
 
+                <div style={{ float: "left", margin: 30, marginBottom: 20 }}>
+                  <div style={{ marginBottom: 10 }}>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: 24,
+                        color: "#333333",
+                      }}
+                    >
+                      {CustomerEN[7].label}
+                    </p>
+                  </div>
+                  <Autocomplete
+                    id="country-select-demo"
+                    sx={{ width: 285 }}
+                    options={data}
+                    autoHighlight
+                    getOptionLabel={(option) => option.label}
+                    onChange={(event, value) => setTranto(value?.label)}
+                    popupIcon={
+                      <MdArrowDropDown
+                        style={{ color: "#333333", width: 30, height: 33 }}
+                      />
+                    }
+                    renderOption={(props, option) => (
+                      <Box
+                        component="li"
+                        sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                        {...props}
+                      >
+                        {option.label}
+                      </Box>
+                    )}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={CustomerEN[9].label}
+                        inputProps={{
+                          ...params.inputProps,
+                          autoComplete: "new-password",
+                        }}
+                      />
+                    )}
+                  />
+                </div>
+
+                <div
+                  style={{
+                    float: "left",
+                    marginRight: 50,
+                    marginLeft: 50,
+                    marginBottom: 0,
+                    position: "absolute",
+                    top: 270,
+                    left: 50,
+                  }}
+                >
+                  <div style={{ marginBottom: 10 }}>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: 24,
+                        color: "#333333",
+                      }}
+                    >
+                      Additional explanation
+                    </p>
+                  </div>
+                  <textarea
+                    value={textarea}
+                    onChange={handleChange}
+                    maxLength={150}
+                    style={{
+                      position: "absolute",
+                      width: 625,
+                      height: 185,
+                      background: "#FFFFFF",
+                      border: "1px solid #E5E5E5",
+                      boxSizing: "border-box",
+                      borderRadius: 5,
+                      padding: 20,
+                    }}
+                  />
+                </div>
+
+                <button
+                  style={{
+                    float: "left",
+                    position: "absolute",
+                    top: 508,
+                    left: 595,
+                    width: 135,
+                    padding: 10,
+                    borderRadius: 30,
+                    textAlign: "center",
+                    borderColor: "transparent",
+                  }}
+                  onClick={() => promotion(1)}
+                  className="Get_Quote"
+                >
+                  <p style={{ color: "#FFFFFF", fontSize: 18 }}>
+                    {CustomerEN[11].label}
+                  </p>
+                </button>
+              </div>
+            </div>
+
+            {promo === 1 ? (
               <div
                 style={{
-                  height: height,
+                  height: "200vh",
                   width: width,
                 }}
               >
-                {promo === 1 ? (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: width * 0.06,
-                      width: width * 0.91,
-                      height: 500,
-                      background: "#FFF9E5",
-                      boxSizing: "border-box",
-                      textAlign: "left",
-                      padding: 50,
-                      top: height * 1.1,
-                    }}
-                  >
-                    <div
-                      style={{
-                        float: "left",
-                        // margin: 30,
-                        marginRight: 400,
-                        // marginBottom: 20,
-                      }}
-                    >
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[5].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {type}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[6].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranfrom}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[8].label}
-                        </p>
-                        <div style={{ width: 400, wordWrap: "break-word" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    left: width * 0.06,
+                    width: width * 0.91,
+                    height: 500,
+                    // background: "#FFF9E5",
+                    boxSizing: "border-box",
+                    textAlign: "left",
+                    padding: 20,
+                    top: 600,
+                  }}
+                >
+                  <div>
+                    <div>
+                      <p className="textHeading2_overviwe2">Translator</p>
+                    </div>
+                    <div className="BoxFilter">
+                      <div
+                        style={{
+                          float: "left",
+                          marginLeft: 45,
+                          marginRight: 45,
+                        }}
+                      >
+                        <div style={{ marginBottom: 10 }}>
                           <p
                             style={{
-                              fontWeight: "bold",
-                              fontSize: 18,
-                              color: "#888888",
+                              fontWeight: 500,
+                              fontSize: 24,
+                              color: "#333333",
                             }}
                           >
-                            {textarea}
+                            {CustomerEN[5].label}
                           </p>
                         </div>
+                        <Autocomplete
+                          id="country-select-demo"
+                          sx={{ width: 285 }}
+                          options={data2}
+                          autoHighlight
+                          getOptionLabel={(option) => option.label}
+                          onChange={(event, value) => settype(value?.label)}
+                          popupIcon={
+                            <MdArrowDropDown
+                              style={{
+                                color: "#333333",
+                                width: 30,
+                                height: 33,
+                              }}
+                            />
+                          }
+                          renderOption={(props, option) => (
+                            <Box
+                              component="li"
+                              sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                              {...props}
+                            >
+                              {option.label}
+                            </Box>
+                          )}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label={CustomerEN[9].label}
+                              inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "new-password",
+                              }}
+                            />
+                          )}
+                        />
                       </div>
 
                       <div>
                         <p
                           style={{
-                            fontWeight: "bold",
+                            fontWeight: 500,
                             fontSize: 24,
                             color: "#333333",
                           }}
                         >
-                          {CustomerEN[12].label}
+                          Rating
                         </p>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#CF0202",
-                          }}
-                        >
-                          {price}
-                        </p>
+
+                        <div>
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={checked?.checked1}
+                                onChange={(e) =>
+                                  setChecked({
+                                    ...checked,
+                                    checked1: e.target.checked,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                            }
+                            label="5 Star"
+                          />
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={checked?.checked2}
+                                onChange={(e) =>
+                                  setChecked({
+                                    ...checked,
+                                    checked2: e.target.checked,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                            }
+                            label="4 Star"
+                          />
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={checked?.checked3}
+                                onChange={(e) =>
+                                  setChecked({
+                                    ...checked,
+                                    checked3: e.target.checked,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                            }
+                            label="3 Star"
+                          />
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={checked?.checked4}
+                                onChange={(e) =>
+                                  setChecked({
+                                    ...checked,
+                                    checked4: e.target.checked,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                            }
+                            label="2 Star"
+                          />
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={checked?.checked5}
+                                onChange={(e) =>
+                                  setChecked({
+                                    ...checked,
+                                    checked5: e.target.checked,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                            }
+                            label="1 Star"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div style={{ float: "left" }}>
-                      <div>
-                        <p
+                    <div>
+                      <div className="cardTranslator">
+                        <div
                           style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
+                            position: "relative",
+                            top: 30,
+                            textAlign: "center",
                           }}
                         >
-                          {CustomerEN[4].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {trantype}
-                        </p>
-                      </div>
+                          {/* <img
+                              src={profile}
+                              alt="profile"
+                              className="profile"
+                            /> */}
+                          <FaUserCircle
+                            alt="avatar"
+                            className="profile"
+                            style={{ fontSize: 45, color: " #e6e6e6" }}
+                          />
+                          <p
+                            style={{
+                              marginTop: 10,
+                              fontWeight: 400,
+                              fontSize: 18,
+                            }}
+                          >
+                            Habi
+                          </p>
+                          <div style={{ width: "100%", marginLeft: 60 }}>
+                            <p style={{ float: "left", marginRight: 10 }}>
+                              5.0
+                            </p>
+                            <Stack spacing={1}>
+                              <Rating
+                                name="half-rating-read"
+                                defaultValue={5}
+                                readOnly
+                              />
+                            </Stack>
+                          </div>
 
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#333333",
-                          }}
-                        >
-                          {CustomerEN[7].label}
-                        </p>
-                        <br />
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            color: "#888888",
-                          }}
-                        >
-                          {tranto}
-                        </p>
+                          <div
+                            style={{
+                              fontSize: 13,
+                              marginLeft: 30,
+                              marginRight: 30,
+                              marginTop: 10,
+                            }}
+                          >
+                            <p style={{ float: "left" }}>Skills :</p>
+                            <p>General Document, Official Document</p>
+                          </div>
+
+                          <div
+                            style={{
+                              fontSize: 13,
+                              marginLeft: 30,
+                              marginRight: 30,
+                              marginTop: 10,
+                            }}
+                          >
+                            <p style={{ float: "left" }}>Languages :</p>
+                            <p>English,汉语 官话,粵語, ไทย,한국어</p>
+                            <div className="boxPrice">
+                              <p className="Price">Price</p>
+                              <p className="PriceInt">35.99฿</p>
+                            </div>
+                            <button
+                              style={{
+                                width: 200,
+                                height: 40,
+                                background: "#047ACF",
+                                color: "#FFFFFF",
+                                border: "none",
+                                borderRadius: 20,
+                                marginTop: 20,
+                              }}
+                              onClick={() => setOpen(true)}
+                            >
+                              Deal
+                            </button>
+                          </div>
+                        </div>
                       </div>
+                      {/* dlmldmfl;dm */}
                     </div>
                   </div>
-                ) : null}
+                </div>
               </div>
+            ) : (
+              <div
+                style={{
+                  height: "100vh",
+                  width: width,
+                }}
+              ></div>
+            )}
+          </div>
+          <div style={{ position: "relative" }}>
+            <div>
+              <Footer v="English" />
             </div>
           </div>
-
-          {promo === 1 ? (
-            <div style={{ top: height * 2.5, position: "relative" }}>
-              <div>
-                <Footer v="English" />
-              </div>
-            </div>
-          ) : (
-            <div style={{ top: height * 1.56, position: "relative" }}>
-              <div>
-                <Footer v="English" />
-              </div>
-            </div>
-          )}
-        </>
-      )}
+        </div>
+      </>
     </>
   );
 };

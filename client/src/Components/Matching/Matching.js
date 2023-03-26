@@ -30,14 +30,14 @@ import { MdArrowDropDown } from "react-icons/md";
 
 import {
   Translate02EN,
-  Translate02DE,
-  Translate02TH,
+  // Translate02DE,
+  // Translate02TH,
   CustomerEN,
-  CustomerDE,
-  CustomerTH,
+  // CustomerDE,
+  // CustomerTH,
   Translate01EN,
-  Translate01TH,
-  Translate01DE,
+  // Translate01TH,
+  // Translate01DE,
 } from "../Data/DataLanguage";
 
 import axios from "axios";

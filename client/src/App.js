@@ -35,7 +35,7 @@ function App() {
             <StyledEngineProvider injectFirst>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Home/Services/Customer" element={<Customer />} />
+                <Route path="/Home/Order/Customer" element={<Customer />} />
                 <Route path="/Notification" element={<Notification />} />
                 <Route path="/Matching" element={<Matching />} />
                 <Route
